@@ -17,6 +17,13 @@ public class ChatCounter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		// loading a file
+		//read files from mac, read files from windows
+		//parsing messages
+		//find numbers
+		//export result file
+		
 		String path;
 		Scanner keyboard = new Scanner(System.in);
 		
@@ -25,11 +32,10 @@ public class ChatCounter {
 		
 		FileLoader loadFile = new FileLoader();
 		loadFile.readDirectory(path);
-		
 		messages = loadFile.getMessages();
 		
-		//System.out.println("End of main");
-		//System.out.println(messages);
+		System.out.println("End of main");
+		System.out.println(messages);
 		keyboard.close();
 	}
 }

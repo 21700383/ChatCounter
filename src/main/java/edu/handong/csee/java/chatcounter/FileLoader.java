@@ -1,35 +1,34 @@
 package edu.handong.csee.java.chatcounter;
 
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class FileLoader {
 	private ArrayList<String> messages;
 	
-	public void readDirectory(String path) {
+	public void readDirectory(String path){
 		
 		ArrayList<File> fileNames = getFileNames(path); // get files from the path
-		Scanner inputStream = null;
-		
+        BufferedReader br = null;
+        
 		for(File fileName:fileNames) { // for each file name in fileNames
 			try {
-				//System.out.println(fileName);
-				inputStream = new Scanner (fileName);
-			} catch (FileNotFoundException e) {
-				System.out.println ("Error opening the file " + fileName);
-				System.exit (0);
-			}
-			while (inputStream.hasNextLine ()) {
-				String line = inputStream.nextLine ();
-				System.out.println (line);
-				messages.add(line);
+				br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
+				String line;
+				while ((line = br.readLine()) != null) { // while loop begins here
+					//System.out.println(thisLine);
+					messages.add(line);
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-		inputStream.close ();
 	}
-
 	
 	private ArrayList<File> getFileNames(String path) {
 		
