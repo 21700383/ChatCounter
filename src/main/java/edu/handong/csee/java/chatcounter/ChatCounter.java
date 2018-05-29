@@ -20,7 +20,7 @@ public class ChatCounter {
 		
 		// loading a file
 		//read files from mac, read files from windows
-		//parsing messages
+		//parsing messages(name, datetime, message)
 		//find numbers
 		//export result file
 		
